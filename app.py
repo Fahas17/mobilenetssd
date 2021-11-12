@@ -150,10 +150,10 @@ def event_handle(event):
     if msgType == "text":
         msg = str(event["message"]["text"])
         if (msg == "สวัสดี) :
-            replyobi = TextSendMessage (text ="ดีด้วย")
+            replyObi = TextSendMessage (text ="ดีด้วย")
         else : 
-            replyobi = TextSendMessage (text =msg )
-        line_bot_api.reply_message (rtoken,replyobi)
+            replyObi = TextSendMessage (text =msg )
+        line_bot_api.reply_message (rtoken,replyObi)
       elif msgType == "image":
          try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
@@ -161,7 +161,6 @@ def event_handle(event):
             filename = event['message']['id'] + '.jpg'
             i.save(UPLOAD_FOLDER + filename)
             process_file(os.path.join(UPLOAD_FOLDER, filename), filename)
-
             url = request.url_root + DOWNLOAD_FOLDER + filename
             
             line_bot_api.reply_message(
